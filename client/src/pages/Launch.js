@@ -5,8 +5,11 @@ import Clickable from "../components/Clickable";
 const Launch = (props) => {
   const selectorBody = useMemo(() => {
     return props.planets?.map((planet) => (
-      <option value={planet.kepler_name} key={planet.kepler_name}>
-        {planet.kepler_name}
+      <option
+        value={planet.keplerName}
+        key={planet.keplerName}
+      >
+        {planet.keplerName}
       </option>
     ));
   }, [props.planets]);
@@ -14,7 +17,11 @@ const Launch = (props) => {
   const today = new Date().toISOString().split("T")[0];
 
   return (
-    <Appear id="launch" animate show={props.entered}>
+    <Appear
+      id="launch"
+      animate
+      show={props.entered}
+    >
       <Paragraph>
         Schedule a mission launch for interstellar travel to one of the Kepler
         Exoplanets.
@@ -49,7 +56,11 @@ const Launch = (props) => {
           defaultValue={today}
         />
         <label htmlFor="mission-name">Mission Name</label>
-        <input type="text" id="mission-name" name="mission-name" />
+        <input
+          type="text"
+          id="mission-name"
+          name="mission-name"
+        />
         <label htmlFor="rocket-name">Rocket Type</label>
         <input
           type="text"
@@ -58,7 +69,10 @@ const Launch = (props) => {
           defaultValue="Explorer IS1"
         />
         <label htmlFor="planets-selector">Destination Exoplanet</label>
-        <select id="planets-selector" name="planets-selector">
+        <select
+          id="planets-selector"
+          name="planets-selector"
+        >
           {selectorBody}
         </select>
         <Clickable>
@@ -72,7 +86,12 @@ const Launch = (props) => {
             Launch Mission ✔
           </Button>
         </Clickable>
-        {props.isPendingLaunch && <Loading animate small />}
+        {props.isPendingLaunch && (
+          <Loading
+            animate
+            small
+          />
+        )}
       </form>
     </Appear>
   );
